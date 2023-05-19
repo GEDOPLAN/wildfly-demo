@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>de.gedoplan.showcase</groupId>
+    <artifactId>wildfly-demo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>wildfly-faces</artifactId>
+
+  <packaging>war</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>jakarta.platform</groupId>
+      <artifactId>jakarta.jakartaee-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>de.gedoplan</groupId>
+      <artifactId>baselibs-utils</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <defaultGoal>package</defaultGoal>
+    <finalName>${project.artifactId}</finalName>
+
+    <plugins>
+      <plugin>
+        <groupId>org.wildfly.plugins</groupId>
+        <artifactId>wildfly-jar-maven-plugin</artifactId>
+        <configuration>
+          <layers>
+            <layer>cdi</layer>
+            <layer>jsf</layer>
+          </layers>
+          <cli-sessions>
+            <cli-session>
+              <script-files>
+                <script>src/main/wildfly/cli/logging.cli</script>
+              </script-files>
+            </cli-session>
+          </cli-sessions>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

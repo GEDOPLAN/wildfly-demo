@@ -29,6 +29,7 @@
   </repositories>
 
   <modules>
+    <module>wildfly-faces</module>
     <module>wildfly-keycloak</module>
   </modules>
 

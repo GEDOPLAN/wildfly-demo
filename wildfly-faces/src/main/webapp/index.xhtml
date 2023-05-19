@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="WEB-INF/templates/standard.xhtml">
+    <ui:define name="content">
+        <h:form>
+            This demo application shows
+            <ul>
+                <li><h:commandLink value="scopes" action="/scopePage.xhtml?faces-redirect=true" /></li>
+            </ul>
+        </h:form>
+    </ui:define>
+</ui:composition>
+
+</html>
