@@ -23,6 +23,26 @@
       <groupId>de.gedoplan</groupId>
       <artifactId>baselibs-utils</artifactId>
     </dependency>
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.wildfly</groupId>
+      <artifactId>wildfly-ejb-client-bom</artifactId>
+      <version>${wildfly.version}</version>
+      <type>pom</type>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.9.2</version>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -35,18 +55,22 @@
         <artifactId>wildfly-jar-maven-plugin</artifactId>
         <configuration>
           <layers>
+            <layer>cdi</layer>
             <layer>ejb</layer>
+            <layer>jaxrs</layer>
           </layers>
           <cli-sessions>
             <cli-session>
               <script-files>
                 <script>src/main/wildfly/cli/logging.cli</script>
+                <script>src/main/wildfly/cli/port-offset.cli</script>
               </script-files>
             </cli-session>
           </cli-sessions>
-          <jvmArguments>
-            <jvmArgument>-Djboss.socket.binding.port-offset=100</jvmArgument>
-          </jvmArguments>
+          <extra-server-content-dirs>
+            <extra-content>src/main/wildfly/extra</extra-content>
+          </extra-server-content-dirs>
+          <port>10090</port>
         </configuration>
       </plugin>
     </plugins>

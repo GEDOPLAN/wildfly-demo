@@ -42,3 +42,6 @@ buildNumber.properties
 
 # Naryana
 ObjectStore/
+
+# SDKMan
+.sdkmanrc

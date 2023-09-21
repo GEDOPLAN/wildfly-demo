@@ -31,6 +31,7 @@
   <modules>
     <module>wildfly-faces</module>
     <module>wildfly-keycloak</module>
+    <module>wildfly-remote-ejb</module>
   </modules>
 
   <dependencyManagement>
@@ -86,7 +87,7 @@
         <plugin>
           <groupId>org.wildfly.plugins</groupId>
           <artifactId>wildfly-jar-maven-plugin</artifactId>
-          <version>8.0.0.Final</version>
+          <version>10.0.0.Final</version>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -98,10 +99,7 @@
         <configuration>
           <feature-pack-location>wildfly@maven(org.jboss.universe:community-universe)#${wildfly.version}</feature-pack-location>
           <layers combine.children="append">
-            <layer>base-server</layer>
-            <layer>core-tools</layer>
-            <layer>logging</layer>
-            <layer>web-console</layer>
+            <layer>datasources-web-server</layer>
           </layers>
           <excluded-layers>
             <layer>deployment-scanner</layer>
